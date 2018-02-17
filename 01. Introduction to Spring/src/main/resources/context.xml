@@ -20,7 +20,7 @@
     <!--<bean id="guitar" class="ru.kpfu.itis.Guitar"/>-->
 
     <bean id="ivan" class="ru.kpfu.itis.Mucician">
-        <property name="instrument" ref="piano"/>
+        <property name="instrument" ref="guitar"/>
         <property name="name" value="ivan"/>
     </bean>
 
