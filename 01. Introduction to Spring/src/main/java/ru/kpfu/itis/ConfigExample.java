@@ -2,10 +2,9 @@ package ru.kpfu.itis;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
+
+import javax.annotation.PreDestroy;
 
 @Configuration
 public class ConfigExample {
@@ -14,6 +13,8 @@ public class ConfigExample {
     @Bean
     //@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     //@Scope("prototype")
+    @Qualifier("guitar")
+    @Primary
     public Instrument guitar() {
         return new Guitar();
     }
@@ -21,6 +22,7 @@ public class ConfigExample {
     @Bean
     //@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     //@Scope("prototype")
+    @Qualifier("piano")
     public Instrument piano() {
         return new Piano();
     }
@@ -28,6 +30,7 @@ public class ConfigExample {
     @Bean
     public Mucician oleg()
     {
+        System.out.println("Init Oleg");
         return  new Mucician();
     }
 
@@ -35,6 +38,7 @@ public class ConfigExample {
     @Scope("prototype")
     public Mucician petro(@Qualifier("piano") Instrument piano)
     {
+        System.out.println("Init Petr of Ivan");
         Mucician m=  new Mucician();
         m.setAge(33);
         m.setInstrument(piano);
@@ -42,8 +46,10 @@ public class ConfigExample {
     }
 
     @Bean(name = {"aidar"})
+    @Lazy
     public Mucician aydar()
     {
+        System.out.println("Init Aydar");
         Mucician m=  new Mucician();
         m.setAge(33);
         m.setName("Aydar");

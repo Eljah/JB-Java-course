@@ -10,8 +10,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
-        //ApplicationContext context = new AnnotationConfigApplicationContext(ConfigExample.class);
+        //ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
+        ApplicationContext context = new AnnotationConfigApplicationContext(ConfigExample.class);
         Mucician m = (Mucician) context.getBean("oleg");
         System.out.println(m.name);
         System.out.println(m.age);
