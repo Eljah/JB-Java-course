@@ -11,6 +11,7 @@ public class ConfigExample {
 
     @Bean
     //@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+    //@Scope("prototype")
     public Guitar guitar() {
         return new Guitar();
     }
