@@ -12,8 +12,6 @@ public class ConfigExample {
 
 
     @Bean
-    @Primary
-    //@Qualifier("guitar")
     //@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     //@Scope("prototype")
     public Instrument guitar() {
@@ -21,10 +19,9 @@ public class ConfigExample {
     }
 
     @Bean
-    @Qualifier("piano")
     //@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     //@Scope("prototype")
-    public Piano piano() {
+    public Instrument piano() {
         return new Piano();
     }
 
@@ -36,21 +33,20 @@ public class ConfigExample {
 
     @Bean(name = {"petr","ivan"})
     @Scope("prototype")
-    public Mucician petro(Piano instrument)
+    public Mucician petro(@Qualifier("piano") Instrument piano)
     {
         Mucician m=  new Mucician();
         m.setAge(33);
-        m.setInstrument(instrument);
+        m.setInstrument(piano);
         return m;
     }
 
     @Bean(name = {"aidar"})
-    public Mucician aydar(Instrument instrument)
+    public Mucician aydar()
     {
         Mucician m=  new Mucician();
         m.setAge(33);
         m.setName("Aydar");
-        m.setInstrument(instrument);
         return m;
     }
 
