@@ -1,6 +1,7 @@
 package ru.kpfu.itis;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -10,6 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
+        //ApplicationContext context = new AnnotationConfigApplicationContext(ConfigExample.class);
         Mucician m = (Mucician) context.getBean("oleg");
         System.out.println(m.name);
         System.out.println(m.age);
