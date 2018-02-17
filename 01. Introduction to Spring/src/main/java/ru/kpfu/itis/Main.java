@@ -19,6 +19,10 @@ public class Main {
         Mucician m2 = (Mucician) context.getBean("petr");
         System.out.println(m2.getName());
         System.out.println(m2.getAge());
+        m2.setAge(23);
+        System.out.println(m2.getAge());
+        m2 = (Mucician) context.getBean("petr");
+        System.out.println(m2.getAge());
 
         Mucician m3 = (Mucician) context.getBean("ivan");
         m3.getInstrument().play();

@@ -15,7 +15,7 @@ public class Mucician {
     int age;
 
     @Autowired
-    @Qualifier("piano")
+    //@Qualifier("piano")
     Instrument instrument;
 
     List<String> songs;
