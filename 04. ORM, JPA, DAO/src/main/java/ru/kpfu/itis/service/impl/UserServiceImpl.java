@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
-        return repository.getAllUsers();
+        return repository.findAll();
     }
 
     @Override
@@ -24,6 +24,6 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             return;
         }
-        repository.addUser(user);
+        repository.save(user);
     }
 }
