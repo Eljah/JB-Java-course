@@ -14,6 +14,7 @@ import ru.kpfu.itis.service.StudentService;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -46,9 +47,17 @@ public class StudentServiceImpl implements StudentService {
         s.setAdress(a);
         s.setGender(GenderType.MALE);
         Elective e=new Elective();
-        e.setId(12312l);
-        e.setName("Java");
-        e.setDates(new ArrayList<Date>() {{new Date();}});
+        e.setId(123122);
+        e.setName("Java2");
+        List<Date> dates=new ArrayList<Date>();
+        dates.add(new Date());
+        //e.setDates(new ArrayList<Date>() {{new Date();}});
+        e.setDates(dates);
+        electiveRepository.save(e);
+        e=electiveRepository.findByName("Java");
+        List<Elective> electives=new ArrayList<Elective>();
+        electives.add(e);
+        s.setElectives(electives);
         Document d=new Document();
         d.setSerialNumber("1122");
         //d.setStudent(s);
