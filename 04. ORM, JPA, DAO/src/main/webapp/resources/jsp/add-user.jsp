@@ -1,6 +1,6 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<base href="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/" />
 <html>
 <head>
     <title>Title</title>
@@ -8,7 +8,7 @@
 <body>
 <h1> Добавление нового пользователя: </h1>
 
-<sf:form action="/users/add_user" method="post" modelAttribute="user">
+<sf:form action="users/add_user" method="post" modelAttribute="user">
 
     <sf:label path="name">Имя: </sf:label> <sf:input path="name"/> <sf:errors path="name"/> <br>
     <sf:label path="surname">Фамилия: </sf:label> <sf:input path="surname"/> <sf:errors path="surname"/><br>
