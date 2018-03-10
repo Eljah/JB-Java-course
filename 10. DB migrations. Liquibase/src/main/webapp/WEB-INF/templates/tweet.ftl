@@ -21,4 +21,4 @@
 
 </#macro>
 
-<@main title="${tweet.user.username}" customScripts=["/resources/js/comment.js"]/>
+<@main title="${tweet.user.username}" customScripts=["resources/js/comment.js"]/>

@@ -1,8 +1,7 @@
 <#include "main-template.ftl"/>
 <#macro m_body>
-
 <div class="col-md-4 col-md-offset-4">
-    <form action="/login/process" method="post">
+    <form action="login/process" method="post">
         <div class="form-group">
             <label for="exampleInputEmail1">Логин</label>
             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Логин" name="username">
