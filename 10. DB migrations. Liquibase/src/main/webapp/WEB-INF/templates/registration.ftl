@@ -4,6 +4,7 @@
 
 <div class="col-md-4 col-md-offset-4">
 <@sf.form action="registration" method="post" modelAttribute="userform">
+    <@sf.errors/>
     <div class="form-group">
         <label for="username">Логин</label>
         <@sf.input path="username" id="username" cssClass="form-control" placeholder="Логин"/>

@@ -3,9 +3,11 @@ package ru.kpfu.itis.form;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.ScriptAssert;
 
 import javax.validation.constraints.Size;
 
+@ScriptAssert(lang = "javascript", script = "_this.repassword.equals(_this.password)", message = "Пароли должны совпадать")
 public class UserRegistrationForm {
 
     @NotEmpty(message = "Логин не может быть пустым")
