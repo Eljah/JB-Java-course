@@ -25,5 +25,12 @@ public class UserServiceImpl implements UserService {
             return;
         }
         repository.save(user);
-    }
+    };
+
+    @Override
+    public List<User> getUserByLogin(String login)
+    {
+      return repository.findUserByLoginOrName(login);
+    };
+
 }

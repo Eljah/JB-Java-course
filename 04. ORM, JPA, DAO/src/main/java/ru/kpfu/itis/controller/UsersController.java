@@ -12,6 +12,9 @@ import ru.kpfu.itis.model.User;
 import ru.kpfu.itis.service.UserService;
 import ru.kpfu.itis.util.UserFormValidator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "/users")
 public class UsersController {
@@ -25,6 +28,16 @@ public class UsersController {
     @RequestMapping(value = "/all") // /users/all
     public String showAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
+        return "all-users";
+    }
+
+    @RequestMapping(value = "/all/{login}") // /users/all
+    public String showUser(@PathVariable String login, Model model) {
+        List<User> fount=userService.getUserByLogin(login);
+        //List<User> usersList=new ArrayList<>();
+        //usersList.add(fount);
+        //model.addAttribute("users", usersList);
+        model.addAttribute("users", fount);
         return "all-users";
     }
 
