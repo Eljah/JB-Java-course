@@ -1,6 +1,7 @@
 package ru.kpfu.itis.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import ru.kpfu.itis.model.Tweet;
 import ru.kpfu.itis.model.User;
@@ -17,6 +18,7 @@ public class TweetServiceImpl implements TweetService{
     TweetRepository tweetRepository;
 
     @Override
+    @Secured(value = {"ROLE_USER"})
     public void addTweet(User user, String text) {
         Tweet tweet = new Tweet();
         tweet.setUser(user);

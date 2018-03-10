@@ -2,6 +2,7 @@ package ru.kpfu.itis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +35,13 @@ public class TweetController {
     @RequestMapping("/tweets/add")
     @ResponseStatus(HttpStatus.OK)
     public void addTweet(@RequestParam("text") String text) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user=null;
+        try {
+            user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        }
+        catch (java.lang.ClassCastException e)
+        {
+        }
         tweetService.addTweet(user, text);
     }
 
@@ -67,5 +74,7 @@ public class TweetController {
         List<Comment> comments = commentRepository.findByTweet(tweet);
         model.addAttribute("comments", comments);
         return "comment-list";
+
+
     }
 }
