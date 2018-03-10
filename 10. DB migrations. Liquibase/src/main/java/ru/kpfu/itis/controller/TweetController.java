@@ -51,13 +51,14 @@ public class TweetController {
         model.addAttribute("tweet", tweet);
         return "tweet";
     }
-    @RequestMapping("/comments/add")
+    @RequestMapping("/tweets/{tweetid}/comments/add")
     @ResponseStatus(HttpStatus.OK)
-    public void addComment(@RequestParam("text") String text) {
+    public void addComment(@RequestParam("text") String text, @PathVariable("tweetid") Long tweetid) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Comment comment = new Comment();
         comment.setText(text);
         comment.setUser(user);
+        comment.setTweet(tweetRepository.findOne(tweetid));
         commentRepository.save(comment);
     }
     @RequestMapping("/tweets/{id}/comments")

@@ -13,7 +13,7 @@ function sendComment() {
         return;
     }
     $.ajax({
-        url: "comments/add",
+        url: "tweets/"+tweetId+"/comments/add",
         type: "POST",
         data: {
             text: text
@@ -26,7 +26,8 @@ function sendComment() {
 
 function updateComments() {
     $.ajax({
-        url:"tweets/"+userId+"/comments",
+        //url:"tweets/"+userId+"/comments",
+        url:"tweets/"+tweetId+"/comments",
         type:"GET",
         dataType: "html",
         success: function(data) {

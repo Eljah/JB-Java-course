@@ -3,6 +3,7 @@
 <#macro m_body>
 <script>
     var userId = ${tweet.user.id}
+    var tweetId = ${tweet.id}
 </script>
 <h3>${tweet.user.username}</h3>
 
