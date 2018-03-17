@@ -1,4 +1,12 @@
 $(document).ready(function () {
+
+    var baseUrl = $('head base').attr('href');
+    $.ajaxSetup({
+    beforeSend: function(xhr, options) {
+        options.url = baseUrl + options.url;
+    }
+    })
+
     updateTweets();
 
     $("#js-sendtweet").on("click", function () {
@@ -13,7 +21,7 @@ function sendTweet() {
         return;
     }
     $.ajax({
-        url: "/tweets/add",
+        url: "tweets/add",
         type: "POST",
         data: {
             text: text
@@ -26,7 +34,7 @@ function sendTweet() {
 
 function updateTweets() {
     $.ajax({
-        url:"tweets/getAll",
+        url: "tweets/getAll",
         type:"GET",
         dataType: "html",
         success: function(data) {

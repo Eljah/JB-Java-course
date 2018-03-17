@@ -2,12 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="http://localhost:8050/09.Spring_AOP/" />
     <meta charset="UTF-8">
     <title>${title}</title>
-    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="/resources/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/main.css"/>
 
-    <script src="/resources/js/jquery-2.1.3.min.js"></script>
+    <script src="resources/js/jquery-2.1.3.min.js"></script>
 
     <#list customStyles as style>
         <link rel="stylesheet" type="text/css" href="${style}"/>

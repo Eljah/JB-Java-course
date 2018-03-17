@@ -1,5 +1,5 @@
 <#list tweets as tweet>
-<p>${tweet.text}</p>
-<p>${tweet.createdAt} by ${tweet.user.username}</p>
+<p><a href="tweets/${tweet.id}">${tweet.text}</a></p>
+<p>${tweet.createdAt} by <a href="/users/${tweet.user.id}">${tweet.user.username}</a></p>
 <hr>
 </#list>
