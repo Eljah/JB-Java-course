@@ -15,6 +15,7 @@ public class Tweet {
 
     private String text;
 
+    @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
