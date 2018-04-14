@@ -62,6 +62,7 @@ public class TweetController {
         int begin = Math.max(1, current - 5);
         int end = Math.min(begin + 10, page.getTotalPages());
         List<Tweet> tweets = page.getContent();
+        model.addAttribute("total", page.getTotalPages());
         model.addAttribute("tweets", tweets);
         model.addAttribute("deploymentLog", page);
         model.addAttribute("beginIndex", begin);

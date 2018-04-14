@@ -9,7 +9,7 @@
         <createTable tableName="tweet">
             <column name="id"  type="bigint"/>
             <column name="text" type="text" />
-            <column name="created_at" type="date" />
+            <column name="created_at" type="datetime" />
             <column name="user_id" type="bigint" />
         </createTable>
     </changeSet>

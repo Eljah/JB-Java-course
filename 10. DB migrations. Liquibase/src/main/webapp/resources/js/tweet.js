@@ -7,7 +7,7 @@ $(document).ready(function () {
     }
     })
 
-    updateTweets();
+    //updateTweets();
 
     $("#js-sendtweet").on("click", function () {
         sendTweet()
@@ -33,12 +33,12 @@ function sendTweet() {
 }
 
 function updateTweets() {
-    $.ajax({
-        url: "tweets/getAll",
-        type:"GET",
-        dataType: "html",
-        success: function(data) {
-            $("#js-tweets").html(data);
-        }
-    })
-}
+    //$.ajax({
+    //    url: "tweets/pages/1",
+    //    type:"GET",
+    //    dataType: "html",
+    //    success: function(data) {
+    //        $("#js-tweets").html(data);
+    //    }
+    location.reload();
+    }

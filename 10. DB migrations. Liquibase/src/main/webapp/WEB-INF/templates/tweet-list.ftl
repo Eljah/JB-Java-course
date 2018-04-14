@@ -16,7 +16,7 @@
 <a href="tweets/pages/${currentIndex - 1}">Prev</a>
 <a href="tweets/pages/${currentIndex + 1}">Next</a>
 <a href="tweets/pages/${endIndex}">Last</a>
-
+${currentIndex} page of ${total}
 </div>
 
 </#macro>
