@@ -1,6 +1,7 @@
 package ru.kpfu.itis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -47,8 +48,26 @@ public class TweetController {
 
     @RequestMapping("/tweets/getAll")
     public String getAllTweetsPage(Model model) {
-        List<Tweet> tweets = tweetService.getAll();
+        //List<Tweet> tweets = tweetService.getAll();
+        //model.addAttribute("tweets", tweets);
+        //return "tweet-list";
+        return "redirect:/tweets/pages/1";
+    }
+
+    @RequestMapping(value = "/tweets/pages/{pageNumber}", method = RequestMethod.GET)
+    public String getTweetsPage(@PathVariable Integer pageNumber, Model model) {
+        Page<Tweet> page = tweetService.getTweet(pageNumber);
+
+        int current = page.getNumber() + 1;
+        int begin = Math.max(1, current - 5);
+        int end = Math.min(begin + 10, page.getTotalPages());
+        List<Tweet> tweets = page.getContent();
         model.addAttribute("tweets", tweets);
+        model.addAttribute("deploymentLog", page);
+        model.addAttribute("beginIndex", begin);
+        model.addAttribute("endIndex", end);
+        model.addAttribute("currentIndex", current);
+
         return "tweet-list";
     }
 

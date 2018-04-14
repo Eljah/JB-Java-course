@@ -24,7 +24,8 @@ public class IndexController {
 
     @RequestMapping(value = "/")
     public String getIndexPage() {
-        return "index";
+        //return "index";
+        return "redirect:/tweets/getAll";
     }
 
 

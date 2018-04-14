@@ -1,6 +1,9 @@
 package ru.kpfu.itis.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import ru.kpfu.itis.model.Tweet;
@@ -13,6 +16,8 @@ import java.util.List;
 
 @Service
 public class TweetServiceImpl implements TweetService{
+
+    int PAGE_SIZE=5;
 
     @Autowired
     TweetRepository tweetRepository;
@@ -30,5 +35,12 @@ public class TweetServiceImpl implements TweetService{
     @Override
     public List<Tweet> getAll() {
         return tweetRepository.findAll();
+    }
+
+
+    public Page<Tweet> getTweet(Integer pageNumber) {
+        PageRequest request =
+                new PageRequest(pageNumber - 1, PAGE_SIZE, Sort.Direction.DESC, "createdAt");
+        return  tweetRepository.findAll(request);
     }
 }

@@ -1,6 +1,7 @@
 package ru.kpfu.itis.service;
 
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import ru.kpfu.itis.model.Tweet;
 import ru.kpfu.itis.model.User;
@@ -13,5 +14,7 @@ public interface TweetService {
     void addTweet(User user, String text);
 
     List<Tweet> getAll();
+
+    Page<Tweet> getTweet(Integer pageNumber);
 
 }
